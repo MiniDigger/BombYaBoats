@@ -1,15 +1,28 @@
 import Phaser from "phaser";
 import logoImg from "./assets/logo.png";
+import css from './style.css';
 
 const config = {
   type: Phaser.AUTO,
-  parent: "phaser-example",
-  width: 800,
-  height: 600,
+  scale: {
+    mode: Phaser.DOM.FIT,
+    parent: "phaser-example",
+    width: 800,
+    height: 600,
+    autoCenter: Phaser.DOM.CENTER_BOTH,
+    min: {
+      width: 400,
+      height: 300,
+    },
+    max: {
+      width: 1600,
+      height: 1200,
+    }
+  },
   scene: {
     preload: preload,
-    create: create
-  }
+    create: create,
+  },
 };
 
 const game = new Phaser.Game(config);
