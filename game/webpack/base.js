@@ -6,6 +6,9 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 module.exports = {
   mode: "development",
   devtool: "eval-source-map",
+  output: {
+    path: path.resolve(__dirname, '../../www')
+  },
   module: {
     rules: [
       {
@@ -26,8 +29,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"], {
-      root: path.resolve(__dirname, "../")
+    new CleanWebpackPlugin(["www"], {
+      root: path.resolve(__dirname, "../../")
     }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
