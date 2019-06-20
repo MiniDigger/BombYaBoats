@@ -7,7 +7,7 @@ module.exports = {
   mode: "development",
   devtool: "eval-source-map",
   output: {
-    path: path.resolve(__dirname, '../../www')
+    path: path.resolve(__dirname, '../../www/bundle')
   },
   module: {
     rules: [
@@ -29,15 +29,16 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(["www"], {
-      root: path.resolve(__dirname, "../../")
+    new CleanWebpackPlugin(["bundle"], {
+      root: path.resolve(__dirname, "../../www/")
     }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
       WEBGL_RENDERER: JSON.stringify(true)
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html"
+      template: "./index.html",
+      filename: "../index.html"
     })
   ]
 };
